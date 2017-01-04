@@ -1,124 +1,87 @@
 package Etakemon.entity;
 
+/**
+ * Created by hicham.az on 09/12/2016.
+ */
 public class Pelea {
 
-	int Id;
+    int Id;
+    int PuntosContrincanteDos;
+    int PuntosContrincanteUno;
+    String NameContrincanteUno,NameContrincanteDos;
+    Etakemons ContrincanteUno;
+    Etakemons ContrincanteDos;
 
-	int PuntosContrincanteDos;
+    public Pelea() {
+    }
 
-	int PuntosContrincanteUno;
+    public Pelea(int id, int puntosContrincanteDos, int puntosContrincanteUno, String nameContrincanteUno, String nameContrincanteDos, Etakemons contrincanteUno, Etakemons contrincanteDos) {
+        Id = id;
+        PuntosContrincanteDos = puntosContrincanteDos;
+        PuntosContrincanteUno = puntosContrincanteUno;
+        NameContrincanteUno = nameContrincanteUno;
+        NameContrincanteDos = nameContrincanteDos;
+        ContrincanteUno = contrincanteUno;
+        ContrincanteDos = contrincanteDos;
+    }
 
-	String NameContrincanteUno, NameContrincanteDos;
 
-	Etakemon ContrincanteUno;
 
-	Etakemon ContrincanteDos;
+    public int getId() {
+        return Id;
+    }
 
-	public Pelea() {
+    public void setId(int id) {
+        Id = id;
+    }
 
-	}
+    public int getPuntosContrincanteDos() {
+        return PuntosContrincanteDos;
+    }
 
-	public Pelea(int id, int puntosContrincanteDos, int puntosContrincanteUno, String nameContrincanteUno,
-                 String nameContrincanteDos, Etakemon contrincanteUno, Etakemon contrincanteDos) {
+    public void setPuntosContrincanteDos(int puntosContrincanteDos) {
+        PuntosContrincanteDos = puntosContrincanteDos;
+    }
 
-		Id = id;
+    public int getPuntosContrincanteUno() {
+        return PuntosContrincanteUno;
+    }
 
-		PuntosContrincanteDos = puntosContrincanteDos;
+    public void setPuntosContrincanteUno(int puntosContrincanteUno) {
+        PuntosContrincanteUno = puntosContrincanteUno;
+    }
 
-		PuntosContrincanteUno = puntosContrincanteUno;
+    public String getNameContrincanteUno() {
+        return NameContrincanteUno;
+    }
 
-		NameContrincanteUno = nameContrincanteUno;
+    public void setNameContrincanteUno(String nameContrincanteUno) {
+        NameContrincanteUno = nameContrincanteUno;
+    }
 
-		NameContrincanteDos = nameContrincanteDos;
+    public String getNameContrincanteDos() {
+        return NameContrincanteDos;
+    }
 
-		ContrincanteUno = contrincanteUno;
+    public void setNameContrincanteDos(String nameContrincanteDos) {
+        NameContrincanteDos = nameContrincanteDos;
+    }
 
-		ContrincanteDos = contrincanteDos;
+    public Etakemons getContrincanteUno() {
+        return ContrincanteUno;
+    }
 
-	}
+    public void setContrincanteUno(Etakemons contrincanteUno) {
+        ContrincanteUno = contrincanteUno;
+    }
 
-	public int getId() {
+    public Etakemons getContrincanteDos() {
+        return ContrincanteDos;
+    }
 
-		return Id;
+    public void setContrincanteDos(Etakemons contrincanteDos) {
+        ContrincanteDos = contrincanteDos;
+    }
 
-	}
-
-	public void setId(int id) {
-
-		Id = id;
-
-	}
-
-	public int getPuntosContrincanteDos() {
-
-		return PuntosContrincanteDos;
-
-	}
-
-	public void setPuntosContrincanteDos(int puntosContrincanteDos) {
-
-		PuntosContrincanteDos = puntosContrincanteDos;
-
-	}
-
-	public int getPuntosContrincanteUno() {
-
-		return PuntosContrincanteUno;
-
-	}
-
-	public void setPuntosContrincanteUno(int puntosContrincanteUno) {
-
-		PuntosContrincanteUno = puntosContrincanteUno;
-
-	}
-
-	public String getNameContrincanteUno() {
-
-		return NameContrincanteUno;
-
-	}
-
-	public void setNameContrincanteUno(String nameContrincanteUno) {
-
-		NameContrincanteUno = nameContrincanteUno;
-
-	}
-
-	public String getNameContrincanteDos() {
-
-		return NameContrincanteDos;
-
-	}
-
-	public void setNameContrincanteDos(String nameContrincanteDos) {
-
-		NameContrincanteDos = nameContrincanteDos;
-
-	}
-
-	public Etakemon getContrincanteUno() {
-
-		return ContrincanteUno;
-
-	}
-
-	public void setContrincanteUno(Etakemon contrincanteUno) {
-
-		ContrincanteUno = contrincanteUno;
-
-	}
-
-	public Etakemon getContrincanteDos() {
-
-		return ContrincanteDos;
-
-	}
-
-	public void setContrincanteDos(Etakemon contrincanteDos) {
-
-		ContrincanteDos = contrincanteDos;
-
-	}
 
 }
