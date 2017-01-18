@@ -60,7 +60,7 @@
                     data: JSON.stringify(obj),
                     success: function (response) {
                         alert("login ok" + response);
-                        window.location.href = "Ranking.jsp";
+                        window.location.href = "test.jsp";
                     },
                     error: function (response) {
                         console.log("login fail" + response);
