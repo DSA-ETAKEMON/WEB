@@ -80,5 +80,42 @@ body {
     </div>
     </center>
     </div>
+
+
+
+<script>
+
+    var BASE_URI = "http://localhost:9091/etakemon/";
+    var warningVisible = true;
+
+
+    $(document).ready(function () {
+        var obj = JSON.parse(localStorage.getItem("user"));
+        console.log(obj.name);
+        var id = parseInt(obj.id);
+        // obj.nick = $("#inputNick").val();
+        // obj.password = $("#inputPass").val();
+        $.ajax({
+            url: BASE_URI + "fight/GetTopUsers",
+            type: 'POST',
+            crossDomain: true,
+            contentType: 'application/json',
+            dataType: 'json',
+            // data: JSON.stringify(obj),
+            success: function (response) {
+                alert("lista TopUsers cargada : " + (response));
+                // localStorage.setItem("nick", obj.nick)
+                // window.location.href = "Menu.jsp";
+            },
+            error: function (response) {
+                console.log("Fail cargando la lista de topUsers  " + response);
+            }
+        });
+
+
+    });
+
+</script>
+
 </body>
 </html>

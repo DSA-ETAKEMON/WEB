@@ -60,14 +60,15 @@
                     data: JSON.stringify(obj),
                     success: function (response) {
                         alert("login ok" + response);
-                        window.location.href = "test.jsp";
+                        localStorage.setItem("user", JSON.stringify(response));
+                       // localStorage.setItem("nick", obj.nick);
+                        window.location.href = "Menu.jsp";
                     },
                     error: function (response) {
                         console.log("login fail" + response);
                     }
                 });
             }
-
         });
     });
 

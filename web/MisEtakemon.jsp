@@ -48,6 +48,7 @@ body {
 		</div>
 		
 		<center>
+
 		  <li id="fiormulario" class="list-group-item list-group-item-info">Nombre Etakemon : <b>Hicham</b></li>
 		<img src="http://publicdomainvectors.org/photos/cow.png" class="img-responsive" alt="Cinque Terre" width="304" height="236">
 		 <li id="fuyormulario" class="list-group-item list-group-item-success">Puntos Etakemon: <b>21020</b></li>
@@ -57,5 +58,42 @@ body {
 		 <li id="formulario" class="list-group-item list-group-item-success">Puntos Etakemon: <b>21020</b></li>
 		</center>
 	</div>
+
+
+<script>
+
+    var BASE_URI = "http://localhost:9091/etakemon/";
+    var warningVisible = true;
+
+
+    $(document).ready(function () {
+               var obj = JSON.parse(localStorage.getItem("user"));
+               console.log(obj.name);
+               var id = parseInt(obj.id);
+               console.log("id es ", id);
+               // obj.nick = $("#inputNick").val();
+               // obj.password = $("#inputPass").val();
+                $.ajax({
+                    url: BASE_URI + "etakemon/misestakemons/3",
+                    type: 'GET',
+                    crossDomain: true,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                   // data: JSON.stringify(obj),
+                    success: function (response) {
+                        alert("Lista etakemons cargada : " + (response));
+                       // localStorage.setItem("nick", obj.nick)
+                       // window.location.href = "Menu.jsp";
+                    },
+                    error: function (response) {
+                        console.log("Fail cargando la lista de etakemons  " + response);
+                    }
+                });
+
+
+    });
+
+</script>
+
 </body>
 </html>
