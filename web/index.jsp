@@ -51,7 +51,7 @@ body {
 					<h4>Seleccione una sección</h4>
 					<a href="Login.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</button></a><br>
 					<br> <a href="MisEtakemon.jsp"><button class="btn btn-info">&nbsp;Mis Etakemons&nbsp;</button></a><br>
-					<br> <a href="registrar"><button class="btn btn-info">
+					<br> <a href="Registrar.jsp"><button class="btn btn-info">
 							Registrar</button></a><br>
 				</div>
 			</div>
