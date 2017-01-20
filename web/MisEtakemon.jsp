@@ -11,8 +11,10 @@
 <html>
 <head>
 <style>
-#formulario {
+#result {
 	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 body {
@@ -46,16 +48,12 @@ body {
 				<img src="http://www.pd4pic.com/images/head-africa-branches-circle-lion-art-animal-mane.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
 			</center>
 		</div>
-		
+	</div>
+<div id="result">
 		<center>
 
-		  <li id="fiormulario" class="list-group-item list-group-item-info">Nombre Etakemon : <b>Hicham</b></li>
-		<img src="http://publicdomainvectors.org/photos/cow.png" class="img-responsive" alt="Cinque Terre" width="304" height="236">
-		 <li id="fuyormulario" class="list-group-item list-group-item-success">Puntos Etakemon: <b>21020</b></li>
+		 
 		<br>
-		  <li id="fo99rmulario" class="list-group-item list-group-item-info">Nombre Etakemon : <b>Hicham</b></li>
-		<img src="http://publicdomainvectors.org/photos/cow.png" class="img-responsive" alt="Cinque Terre" width="304" height="236">
-		 <li id="formulario" class="list-group-item list-group-item-success">Puntos Etakemon: <b>21020</b></li>
 		</center>
 	</div>
 
@@ -74,14 +72,22 @@ body {
                // obj.nick = $("#inputNick").val();
                // obj.password = $("#inputPass").val();
                 $.ajax({
-                    url: BASE_URI + "etakemon/misestakemons/3",
+                    url: BASE_URI + "etakemon/misestakemons/"+id,
                     type: 'GET',
                     crossDomain: true,
                     contentType: 'application/json',
                     dataType: 'json',
                    // data: JSON.stringify(obj),
                     success: function (response) {
-                        alert("Lista etakemons cargada : " + (response));
+                        $.each(response, function(k, v) {
+                          //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
+                            $('#result').append("<li class='list-group-item list-group-item-info'>Tipo Etakemon: "+v.tipo+" Puntos Etakemon: "+ v.puntos +" ID :"+ v.id +"</li>");
+                            $('#result').append("<center><img src='/img/"+v.tipo+".png' class='img-responsive' alt='Cinque Terre' width='100' height='150'></center>");
+
+
+                        });
+
+                       // alert("Lista etakemons cargada : " + (response));
                        // localStorage.setItem("nick", obj.nick)
                        // window.location.href = "Menu.jsp";
                     },
@@ -94,6 +100,6 @@ body {
     });
 
 </script>
-
+<ul id="res" class="list-group"></ul>
 </body>
 </html>

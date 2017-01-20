@@ -48,39 +48,13 @@ body {
 		
 <center>
 <div id="formulario">
-<div  class="panel panel-danger">
-      <div class="panel-heading"><b>Primero</b></div>
-      <div class="panel-body">Nick : Hicham  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos : 132051</div>
-    </div>
-    <br>
-     <div class="panel panel-warning">
-      <div class="panel-heading"><b>Segundo</b></div>
-    <div class="panel-body">Nick : Hicham  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos : 132051</div>
-    </div>
-    <br>
-      <div class="panel panel-info">
-      <div class="panel-heading"><b>Tercero</b></div>
-      <div class="panel-body">Nick : Hicham  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos : 132051</div>
-    </div>
-    <br>
-     <div class="panel panel-success">
-      <div class="panel-heading"><b>Cuarto</b></div>
-      <div class="panel-body">Nick : Hicham  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos : 132051</div>
-    </div>
-    <br>
-      <div class="panel panel-primary">
-      <div class="panel-heading"><b>Quinto</b></div>
-      <div class="panel-body">Nick : Hicham  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos : 132051</div>
-    </div>
-    </div>
+<div id="listado" class="panel panel-danger">
+      <center>
+
     </center>
     </div>
-
+</div>
+</center>
 
 
 <script>
@@ -97,15 +71,20 @@ body {
         // obj.password = $("#inputPass").val();
         $.ajax({
             url: BASE_URI + "fight/GetTopUsers",
-            type: 'POST',
+            type: 'GET',
             crossDomain: true,
             contentType: 'application/json',
             dataType: 'json',
             // data: JSON.stringify(obj),
             success: function (response) {
-                alert("lista TopUsers cargada : " + (response));
-                // localStorage.setItem("nick", obj.nick)
-                // window.location.href = "Menu.jsp";
+                $.each(response, function(k, v) {
+                    var cont = k+1;
+                    //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
+                    $('#listado').append("<div class='panel-heading'<br>Ranking: "+  cont+"</br></li>");
+                    $('#listado').append("<div class='panel-body'>Nick :"+ v.name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos :"+ v.puntuacionTotal+"</center>");
+
+
+                });
             },
             error: function (response) {
                 console.log("Fail cargando la lista de topUsers  " + response);

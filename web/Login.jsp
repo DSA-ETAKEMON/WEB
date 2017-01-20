@@ -59,8 +59,8 @@
                     dataType: 'json',
                     data: JSON.stringify(obj),
                     success: function (response) {
-                        alert("login ok" + response);
-                        localStorage.setItem("user", JSON.stringify(response));
+
+                                               localStorage.setItem("user", JSON.stringify(response));
                        // localStorage.setItem("nick", obj.nick);
                         window.location.href = "Menu.jsp";
                     },
