@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -36,13 +36,15 @@
         </ul>
         <button class="btn btn-danger navbar-btn">Cerrar Sesión</button>
     </div>
-</nav>	<br>
+</nav>
+<br>
 
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
             <h1>Ranking EtakemonGO</h1>
-            <img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+            <img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded"
+                 alt="Cinque Terre" width="304" height="236">
         </center>
     </div>
 
@@ -56,7 +58,7 @@
         </div>
     </center>
 
-
+</div>
     <script>
 
         var BASE_URI = "http://localhost:9091/etakemon/";
@@ -66,7 +68,8 @@
         $(document).ready(function () {
             var obj = JSON.parse(localStorage.getItem("user"));
             console.log(obj.name);
-            var id = "'"+parseInt(obj.id)+"'";
+            var id =  parseInt(obj.id);
+          //  alert("mi id es :" + obj.id);
             // obj.nick = $("#inputNick").val();
             // obj.password = $("#inputPass").val();
             $.ajax({
@@ -77,12 +80,13 @@
                 dataType: 'json',
                 // data: JSON.stringify(obj),
                 success: function (response) {
-                    $.each(response, function(k, v) {
-                        var cont = k+1;
+                    $.each(response, function (k, v) {
+                        var cont = k + 1;
+                        var id2 = parseInt(v.id);
+                       // alert("id2 es " + v.id + "id 1 es" + id);
                         //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
-                        $('#listado').append("<div onClick='reply_click("+1+","+2+")' class='panel-heading'<br>Ranking: "+  cont+"</br></li>");
-                        $('#listado').append("<div class='panel-body'>Nick :"+ v.name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos :"+ v.puntuacionTotal+"</center>");
-
+                        $('#listado').append("<div onClick='reply_click(" + id2 + "," + id + ")' class='panel-heading'<br>Ranking: " + cont + "</br></div>");
+                        $('#listado').append("<div class='panel-body'>Nick :" + v.name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos :" + v.puntuacionTotal + "</center></div>");
 
                     });
                 },
@@ -94,32 +98,37 @@
 
         });
 
-        function reply_click(clicked_id,id)
-        {
-            var id2 =  clicked_id;
-            var id1 = id ;
-            var obj = {'estado1':'TRUE','estado2':'IDLE','contrincanteuno':id1,'contrincantedos':id2};
-            alert(obj.contrincantedos, obj.contrincanteuno);
-            $.ajax({
-                url: BASE_URI + "fight/retar",
-                type: 'POST',
-                crossDomain: true,
-                contentType: 'application/json',
-                dataType: 'json',
-                data: JSON.stringify(obj),
-                success: function (response) {
-                    alert("ok", response);
-                    $.each(response, function(k, v) {
-                        var cont = k+1;
-x
+        function reply_click(clicked_id, id) {
+            var id2 = clicked_id;
+            var id1 = id;
+            var obj = {'estado1': 'TRUE', 'estado2': 'IDLE', 'contrincanteuno': id1, 'contrincantedos': id2};
+            //alert(obj.contrincantedos+ obj.contrincanteuno);
+            var answer = confirm("Desea retar al jugador con id "+ id2 +"?");
+            if (answer) {
+                //some code
+                $.ajax({
+                    url: BASE_URI + "fight/retar",
+                    type: 'POST',
+                    crossDomain: true,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(obj),
+                    success: function (response) {
+                        // alert("ok", response);
+                       // $.each(response, function (k, v) {
+                            alert("Reto enviado correctamente, se generó la pelea con id: "+ response.id);
 
-                    });
-                },
-                error: function (response) {
-                    console.log("Fail cargando la lista de topUsers  " + response);
-                }
-            });
 
+                    },
+                    error: function (response) {
+                        console.log("Fail cargando enviado reto " + response);
+                    }
+                });
+            }
+            else {
+                //some code
+                alert("Reto cancelado");
+            }
         }
     </script>
 
