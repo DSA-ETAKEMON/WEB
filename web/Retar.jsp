@@ -42,7 +42,7 @@
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
-            <h1>Ranking EtakemonGO</h1>
+            <h1>Retar a otro usuario</h1>
             <img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded"
                  alt="Cinque Terre" width="304" height="236">
         </center>
@@ -86,7 +86,7 @@
                        // alert("id2 es " + v.id + "id 1 es" + id);
                         //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
                         $('#listado').append("<div onClick='reply_click(" + id2 + "," + id + ")' class='panel-heading'<br>Ranking: " + cont + "</br></div>");
-                        $('#listado').append("<div class='panel-body'>Nick :" + v.name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos :" + v.puntuacionTotal + "</center></div>");
+                        $('#listado').append("<div class='panel-body'>Nick: " + v.name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos: " + v.puntuacionTotal + "</center></div>");
 
                     });
                 },

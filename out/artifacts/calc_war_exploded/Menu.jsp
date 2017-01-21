@@ -66,7 +66,7 @@
     <script type="text/javascript">
         var obj = JSON.parse(localStorage.getItem("user"));
         console.log("Menu --> obj es ..... ",obj);
-        $('#nick').append(obj.nick);
+        $('#nick').append(obj.name);
     </script>
 
 </body>

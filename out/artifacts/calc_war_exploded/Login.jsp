@@ -100,7 +100,7 @@
                             <label>Password :</label>     <input
                             class="form-control" name="inputPass" id="inputPass" type="password">  
                     </div>
-                    <input type="button" id="submitBtn" class="btn btn-default">Acceder</input>
+                    <button type="button" id="submitBtn" class="btn btn-default">Acceder</button>
 
                 </form>
 
