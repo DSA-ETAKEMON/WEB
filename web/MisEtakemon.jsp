@@ -26,18 +26,18 @@ body {
 </head>
 <body>
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="index.jsp">Principal</a></li>
-      <li class="active"><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
-      <li><a href="Ranking.jsp">Ranking</a></li>
-      <li><a href="#">Luchar!</a></li>
-    </ul>
-   <button class="btn btn-danger navbar-btn">Cerrar Sesión</button>
-  </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="Menu.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+			<li><a href="Ranking.jsp">Ranking</a></li>
+			<li><a href="TodoReto.jsp">Retos</a></li>
+			<li><a href="Jugar.jsp">Luchar!</a></li>
+		</ul>
+		<li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
+	</div>
 </nav>	
 
 	<br>
@@ -81,8 +81,8 @@ body {
                     success: function (response) {
                         $.each(response, function(k, v) {
                           //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
-                            $('#result').append("<li class='list-group-item list-group-item-info'>Tipo Etakemon: "+v.tipo+" Puntos Etakemon: "+ v.puntos +" ID :"+ v.id +"</li>");
-                            $('#result').append("<center><img src='/img/"+v.tipo+".png' class='img-responsive' alt='Cinque Terre' width='100' height='150'></center>");
+                            $('#result').append("<li class='list-group-item list-group-item-info'><center>Nombre: "+v.name+" <br>Tipo: "+v.tipo+" <br>Puntos: "+ v.puntos +" <br>ID: "+ v.id +"</center></li>");
+                            $('#result').append("<li class='list-group-item list-group-item-warning'><center><img src='/img/"+v.tipo+".png' class='img-responsive' alt='Cinque Terre' width='100' height='150'></center></li><br>");
 
 
                         });

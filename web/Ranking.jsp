@@ -24,28 +24,30 @@ body {
 </head>
 <body>
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="Menu.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+            <li><a href="Ranking.jsp">Ranking</a></li>
+            <li><a href="TodoReto.jsp">Retos</a></li>
+            <li><a href="Jugar.jsp">Luchar!</a></li>
+        </ul>
+        <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.jsp">Principal</a></li>
-      <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
-      <li class="active"><a href="Ranking.jsp">Ranking</a></li>
-      <li><a href="#">Luchar!</a></li>
-    </ul>
-   <button class="btn btn-danger navbar-btn">Cerrar Sesión</button>
-  </div>
 </nav>	<br>
 
 	<div class="container">
 		<div class="jumbotron" style='background: #C7E8EF;'>
 			<center>
 				<h1>Ranking EtakemonGO</h1>
-				<img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded" alt="Cinque Terre" width="304" height="236"> 
+                <img src="http://www.eoi.es/blogs/alfredo-fernandez-lorenzo/files/2016/10/ranking-1.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+                <br>
+                <img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
 			</center>
 		</div>
-		
+    </div>
 <center>
 <div id="formulario">
 <div id="listado" class="panel panel-danger">
@@ -80,8 +82,8 @@ body {
                 $.each(response, function(k, v) {
                     var cont = k+1;
                     //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
-                    $('#listado').append("<div class='panel-heading'<br>Ranking: "+  cont+"</br></li>");
-                    $('#listado').append("<div class='panel-body'>Nick :"+ v.name +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos :"+ v.puntuacionTotal+"</center>");
+                    $('#listado').append("<div class='panel-heading'<br>Posición: "+  cont+"</br></div>");
+                    $('#listado').append("<div class='panel-body'>Nick: "+ v.nick +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos: "+ v.puntuacionTotal+"</center></div><br>");
 
 
                 });

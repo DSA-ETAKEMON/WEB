@@ -34,19 +34,18 @@ body {
 <body>
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.jsp">Principal</a></li>
-      <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
-      <li><a href="Ranking.jsp">Ranking</a></li>
-      <li><a href="#">Luchar!</a></li>
-<li>  <button class="btn btn-danger navbar-btn">Cerrar Sesión</button></li>
-    </ul>
- 
-  </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="Menu.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+			<li><a href="Ranking.jsp">Ranking</a></li>
+			<li><a href="TodoReto.jsp">Retos</a></li>
+			<li><a href="Jugar.jsp">Luchar!</a></li>
+		</ul>
+		<li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
+	</div>
 </nav>
 
 	<br>

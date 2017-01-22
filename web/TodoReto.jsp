@@ -26,15 +26,15 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
+            <a class="navbar-brand" href="Menu.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="index.jsp">Principal</a></li>
             <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
-            <li class="active"><a href="Ranking.jsp">Ranking</a></li>
-            <li><a href="#">Luchar!</a></li>
+            <li><a href="Ranking.jsp">Ranking</a></li>
+            <li><a href="TodoReto.jsp">Retos</a></li>
+            <li><a href="Jugar.jsp">Luchar!</a></li>
         </ul>
-        <button class="btn btn-danger navbar-btn">Cerrar Sesión</button>
+        <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
 </nav>
 <br>
@@ -54,8 +54,24 @@
                     <div id="recibidos" class="alert alert-info">
                         <strong>Retos recibidos</strong>
                     </div>
-                    <div id="enviados" class="alert alert-info">
-                        <strong>Retos enviados</strong>
+                    <div id="enviadosAceptados" class="alert alert-info">
+                        <strong>Retos enviados aceptados</strong>
+                    </div>
+                    <div id="enviadosIDLE" class="alert alert-info">
+                        <strong>Retos enviados pendientes</strong>
+                    </div>
+                    <div id="enviadosPendienteJuego" class="alert alert-info">
+                        <strong>Partidas enviadas pendientes</strong>
+                    </div>
+                    <div id="recibidosPendientesJuego" class="alert alert-info">
+                        <strong>Partidas recibidas pendientes</strong>
+
+                    </div>
+                    <div id="enviadosFinalizados" class="alert alert-info">
+                        <strong>Partidas enviadas finalizadas</strong>
+                    </div>
+                    <div id="recibidosFinalizados" class="alert alert-info">
+                        <strong>Partidas recibidas Finalizadas</strong>
                     </div>
                 </center>
         </div>
@@ -68,7 +84,7 @@
     var warningVisible = true;
     var i = 0;
 
-    //enviado
+    //recibidos
     $(document).ready(function () {
         var obj = JSON.parse(localStorage.getItem("user"));
         var fight = {"contrincantedos":obj.id,"estado2":"IDLE"};
@@ -77,6 +93,8 @@
         //  alert("mi id es :" + obj.id);
         // obj.nick = $("#inputNick").val();
         // obj.password = $("#inputPass").val();
+
+        // mis retos recibidos
         $.ajax({
             url: BASE_URI + "fight/misretos",
             type: 'POST',
@@ -88,7 +106,6 @@
                 if(parseInt(response.length)==0) {
                     $('#recibidos').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
                 }else{
-
                 $.each(response, function (k, v) {
                         i++;
                         var cont = k + 1;
@@ -108,29 +125,136 @@
     });
 
 
-
-        //enviados
+        // mis retos recibidos a jugar o jugados
         $.ajax({
-            url: BASE_URI + "fight/misretos",
+            url: BASE_URI + "fight/misretosajugar",
             type: 'POST',
             crossDomain: true,
             contentType: 'application/json',
             dataType: 'json',
-             data: JSON.stringify(obj),
+            data: JSON.stringify(fight),
             success: function (response) {
+                if(parseInt(response)==0) {
+                    $('#recibidosPendientesJuego').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                }else{
+                    $.each(response, function (k, v) {
+                        var emp = "empate";
+                        var nulo = ""+"null";
+                        var ganad = "" + v.ganador;
+                        var juego1 = "" + v.juego1;
+                        var juego2 = "" + v.juego2;
+                        i++;
+                        var cont = k + 1;
+                        var id2 = parseInt(v.id);
+                        if(juego1!=nulo && juego2 ==nulo && ((v.ganador)==(nulo))){
+                            //juego recibidos pendientes de jugar
+                            $('#recibidosPendientesJuego').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
+                            $('#recibidosPendientesJuego').append("<div class='panel-body'>Oponente: " + v.contrincanteuno + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estado: " + v.estado2 + "</center></div>");
+                            $('#recibidosPendientesJuego').append("<div class='btn-group'><button onClick='Accept(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Jugar</button></div>");
+                        }else if(juego1!=nulo && juego2 !=nulo && (v.ganador)!=(nulo)){
+                           //partidas recibidas finalizadas
+                            $('#recibidosFinalizados').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
+                            $('#recibidosFinalizados').append("<div class='panel-body'>Oponente: " + v.contrincanteuno + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ganador: " + v.ganador + "</center></div>");
+                            $('#recibidosFinalizados').append("<div class='btn-group'><button onClick='Accept(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Aceptar</button><button onClick='Cancel(" + JSON.stringify(v) + ")' type='button' class='btn btn-danger'>Rechazar</button></div>");
+                        }});}
+            },
+            error: function (response) {
+                console.log("Fail cargando la lista de topUsers  " + response);
+            }
+
+
+        });
+
+        var fightidle = {"contrincanteuno":obj.id};
+        var nulo = ""+"null";
+
+        //enviados (pendientes)
+        $.ajax({
+            url: BASE_URI + "fight/misretosenviadosidle",
+            type: 'POST',
+            crossDomain: true,
+            contentType: 'application/json',
+            dataType: 'json',
+             data: JSON.stringify(fightidle),
+            success: function (response) {
+                if(parseInt(response.length)==0){
+                    $('#recibidosPendientesJuego').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                }else{
                 $.each(response, function (k, v) {
                     var cont = k + 1;
                     var id2 = parseInt(v.id);
                     // alert("id2 es " + v.id + "id 1 es" + id);
                     //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
-                    $('#enviados').append("<div onClick='reply_click(" + id2 + "," + id + ")' class='panel-heading'<br>Ranking: " + cont + "</br></div>");
-                    $('#recibidos').append("<div class='panel-body'>Nick :" + v.name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos :" + v.puntuacionTotal + "</center></div>");
-                });
+                    $('#enviadosIDLE').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
+                    $('#enviadosIDLE').append("<div class='panel-body'>Oponente: " + v.contrincantedos + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estado: " + v.estado2 + "</center></div>");
+                });}
             },
             error: function (response) {
                 console.log("Fail cargando la lista de topUsers  " + response);
             }
         });
+
+
+        //enviados (aceptados)
+        $.ajax({
+            url: BASE_URI + "fight/misretosenviadosaccept",
+            type: 'POST',
+            crossDomain: true,
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(fightidle),
+            success: function (response) {
+                if(parseInt(response.length)==0) {
+                    $('#enviadosAceptados').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                    $('#enviadosPendienteJuego').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                    $('#enviadosFinalizados').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                }else{
+                $.each(response, function (k, v) {
+                    var emp = "empate";
+                    var nulo = ""+"null";
+                    var ganad = "" + v.ganador;
+                    var juego1 = "" + v.juego1;
+                    var juego2 = "" + v.juego2;
+                    var cont = k + 1;
+                    var id2 = parseInt(v.id);
+                    //partidas enviadas finalizadas
+                    if(juego1!=nulo && juego2!=nulo && (v.ganador)!=(nulo)  )
+                {
+                    $('#enviadosFinalizados').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
+                    $('#enviadosFinalizados').append("<div class='panel-body'>Oponente: " + v.contrincantedos + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gandor: " + v.ganador + "</center></div>");
+                }  else { // retos enviados aceptados para jugarlos
+
+                        // alert("id2 es " + v.id + "id 1 es" + id);
+                        //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
+                        $('#enviadosAceptados').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
+                        $('#enviadosAceptados').append("<div class='panel-body'>Oponente: " + v.contrincantedos + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estado: " + v.estado2 + "</center></div>");
+                        $('#enviadosAceptados').append("<button onClick='Jugar(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Jugar</button>");
+                    }
+
+                        console.log("nulo es:" + (nulo) + "emp es" + emp);
+                    if( ((v.ganador)==(nulo)) && v.juego2==nulo)   {
+
+                        //Juegos enviados pendientes del contrincante2
+                        if((juego1!=nulo))
+                        {
+
+                                $('#enviadosPendienteJuego').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
+                                $('#enviadosPendienteJuego').append("<div class='panel-body'>Oponente: " + v.contrincantedos + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estado: " + v.estado2 + "</center></div>");
+
+                            }
+
+
+                    }
+                    });}
+            },
+            error: function (response) {
+                console.log("Fail cargando la lista de topUsers  " + response);
+            }
+        });
+
+
+
+
 
 
     });
@@ -152,6 +276,7 @@
                     // alert("ok", response);
                     // $.each(response, function (k, v) {
                     alert("Reto aceptado, espere que su oponente juegue.");
+                    localStorage.setItem("fight", JSON.stringify(response))
                 },
                 error: function (response) {
                     console.log("Fail al aceptar reto " + response);
@@ -191,6 +316,13 @@
             //some code
             alert("OK");
         }
+    }
+
+
+    function Jugar(v) {
+        localStorage.setItem("fightToPlay",JSON.stringify(v));
+        window.location.href = "Jugar.jsp";
+
     }
 </script>
 

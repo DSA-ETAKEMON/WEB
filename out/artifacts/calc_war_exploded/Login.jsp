@@ -66,6 +66,9 @@
                     },
                     error: function (response) {
                         console.log("login fail" + response);
+                        $("#formulario")
+                            .append(
+                                "<br><div class=\"alert alert-warning\"> <strong>Datos incorrecto !</strong><br>")
                     }
                 });
             }
@@ -92,12 +95,12 @@
                 <form id="submitform">
                      
                     <div class="form-group">
-                            <label>Nick :</label>     <input
-                            class="inputNick" name="inputNick" id="inputNick" type="text">  
+                            <label>Nick: </label>     <input
+                            class="form-control" name="inputNick" id="inputNick" type="text">  
                     </div>
                      
                     <div class="form-group">
-                            <label>Password :</label>     <input
+                            <label>Password: </label>     <input
                             class="form-control" name="inputPass" id="inputPass" type="password">  
                     </div>
                     <button type="button" id="submitBtn" class="btn btn-default">Acceder</button>
