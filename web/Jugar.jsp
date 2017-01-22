@@ -116,8 +116,12 @@ body {
                 console.log(parseInt(jugada[i]));
             }
                     alert(juego);
+			if(fight.juego1==null)
 					fight['juego1'] = juego;
-                    Fight(fight);
+                   else if(fight.juego2==null)
+                        fight['juego2'] = juego;
+
+                        Fight(fight);
 				}
 			else
 				alert("Debes seleccionar 3 casillas para poder enviar la jugada");

@@ -146,11 +146,11 @@
                         i++;
                         var cont = k + 1;
                         var id2 = parseInt(v.id);
-                        if(juego1!=nulo && juego2 ==nulo && ((v.ganador)==(nulo))){
+                        if(juego1!=nulo && ((v.ganador)==null)){
                             //juego recibidos pendientes de jugar
                             $('#recibidosPendientesJuego').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
                             $('#recibidosPendientesJuego').append("<div class='panel-body'>Oponente: " + v.contrincanteuno + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estado: " + v.estado2 + "</center></div>");
-                            $('#recibidosPendientesJuego').append("<div class='btn-group'><button onClick='Accept(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Jugar</button></div>");
+                            $('#recibidosPendientesJuego').append("<div class='btn-group'><button onClick='Jugar(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Jugar</button></div>");
                         }else if(juego1!=nulo && juego2 !=nulo && (v.ganador)!=(nulo)){
                            //partidas recibidas finalizadas
                             $('#recibidosFinalizados').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
@@ -218,11 +218,12 @@
                     var cont = k + 1;
                     var id2 = parseInt(v.id);
                     //partidas enviadas finalizadas
-                    if(juego1!=nulo && juego2!=nulo && (v.ganador)!=(nulo)  )
+                    if(juego1!=nulo && juego2!=nulo && (ganad)!=(nulo)  )
                 {
                     $('#enviadosFinalizados').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
                     $('#enviadosFinalizados').append("<div class='panel-body'>Oponente: " + v.contrincantedos + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gandor: " + v.ganador + "</center></div>");
-                }  else { // retos enviados aceptados para jugarlos
+                }
+                if(v.juego1==null && v.juego2==null && v.ganador==null) { // retos enviados aceptados para jugarlos
 
                         // alert("id2 es " + v.id + "id 1 es" + id);
                         //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
@@ -231,8 +232,8 @@
                         $('#enviadosAceptados').append("<button onClick='Jugar(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Jugar</button>");
                     }
 
-                        console.log("nulo es:" + (nulo) + "emp es" + emp);
-                    if( ((v.ganador)==(nulo)) && v.juego2==nulo)   {
+//                        console.log("nulo es:" + (nulo) + "emp es" + emp);
+                    if( ((v.ganador)==null) && v.juego2==null && v.juego1!=null)   {
 
                         //Juegos enviados pendientes del contrincante2
                         if((juego1!=nulo))
@@ -322,7 +323,6 @@
     function Jugar(v) {
         localStorage.setItem("fightToPlay",JSON.stringify(v));
         window.location.href = "Jugar.jsp";
-
     }
 </script>
 
