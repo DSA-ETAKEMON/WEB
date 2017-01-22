@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b2cbcf7d-c025-4845-b0b3-53073bcf187b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Jugar.jsp" afterPath="$PROJECT_DIR$/web/Jugar.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/TodoReto.jsp" afterPath="$PROJECT_DIR$/web/TodoReto.jsp" />
     </list>
     <ignored path="calc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/web/TodoReto.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="324" column="43" lean-forward="false" selection-start-line="324" selection-start-column="43" selection-end-line="324" selection-end-column="43" />
+              <caret line="324" column="14" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
               <folding>
                 <marker date="1485116845000" expanded="true" signature="4676:4682" ph="&amp;nbsp;" />
                 <marker date="1485116845000" expanded="true" signature="4682:4688" ph="&amp;nbsp;" />
@@ -163,8 +162,8 @@
       <file leaf-file-name="Jugar.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/Jugar.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="160" column="17" lean-forward="false" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+            <state relative-caret-position="201">
+              <caret line="173" column="52" lean-forward="false" selection-start-line="173" selection-start-column="52" selection-end-line="173" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -938,12 +937,12 @@
       <workItem from="1484998996429" duration="57000" />
       <workItem from="1484999097431" duration="96000" />
       <workItem from="1484999216512" duration="24671000" />
-      <workItem from="1485077519947" duration="12887000" />
+      <workItem from="1485077519947" duration="13058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69188000" />
+    <option name="totallyTimeSpent" value="69359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1310,7 +1309,7 @@
     <entry file="file://$PROJECT_DIR$/web/TodoReto.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="324" column="43" lean-forward="false" selection-start-line="324" selection-start-column="43" selection-end-line="324" selection-end-column="43" />
+          <caret line="324" column="14" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
           <folding>
             <marker date="1485116845000" expanded="true" signature="4676:4682" ph="&amp;nbsp;" />
             <marker date="1485116845000" expanded="true" signature="4682:4688" ph="&amp;nbsp;" />
@@ -1395,8 +1394,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/Jugar.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="160" column="17" lean-forward="false" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+        <state relative-caret-position="201">
+          <caret line="173" column="52" lean-forward="false" selection-start-line="173" selection-start-column="52" selection-end-line="173" selection-end-column="52" />
           <folding />
         </state>
       </provider>

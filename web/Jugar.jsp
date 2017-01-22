@@ -170,7 +170,9 @@ body {
                 success: function (response) {
                     // alert("ok", response);
                     // $.each(response, function (k, v) {
-                    alert("Juego enviado, "+ response);
+                    alert("Juego enviado, el ganador es: "+ response);
+                    window.location.href = "TodoReto.jsp";
+
                 },
                 error: function (response) {
                     console.log("Fail al rechazar reto " + response);
