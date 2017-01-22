@@ -61,7 +61,7 @@
 </div>
     <script>
 
-        var BASE_URI = "http://localhost:9091/etakemon/";
+        var BASE_URI = "http://10.192.253.237:9091/etakemon/";
         var warningVisible = true;
 
 
@@ -100,35 +100,57 @@
 
         function reply_click(clicked_id, id) {
             var id2 = clicked_id;
+            var hasEtkms = false;
             var id1 = id;
             var obj = {'estado1': 'TRUE', 'estado2': 'IDLE', 'contrincanteuno': id1, 'contrincantedos': id2};
             //alert(obj.contrincantedos+ obj.contrincanteuno);
-            var answer = confirm("Desea retar al jugador con id "+ id2 +"?");
-            if (answer) {
-                //some code
-                $.ajax({
-                    url: BASE_URI + "fight/retar",
-                    type: 'POST',
-                    crossDomain: true,
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify(obj),
-                    success: function (response) {
-                        // alert("ok", response);
-                       // $.each(response, function (k, v) {
-                            alert("Reto enviado correctamente, espere a que su oponente acepte el reto");
+            $.ajax({
+                url: BASE_URI + "etakemon/misestakemons/"+id1,
+                type: 'GET',
+                crossDomain: true,
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify(obj),
+                success: function (response) {
+                    // alert("ok", response);
+                    if(response!=null){
+                        var answer = confirm("Desea retar al jugador con id "+ id2 +"?");
+                    if (answer) {
+                        //some code
+                        $.ajax({
+                            url: BASE_URI + "fight/retar",
+                            type: 'POST',
+                            crossDomain: true,
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify(obj),
+                            success: function (response) {
+                                // alert("ok", response);
+                                // $.each(response, function (k, v) {
+                                alert("Reto enviado correctamente, espere a que su oponente acepte el reto");
 
 
-                    },
-                    error: function (response) {
-                        console.log("Fail cargando enviado reto " + response);
+                            },
+                            error: function (response) {
+                                console.log("Fail cargando enviado reto " + response);
+                            }
+                        });
                     }
-                });
-            }
-            else {
-                //some code
-                alert("Reto cancelado");
-            }
+                    else {
+                        //some code
+                        alert("Reto cancelado");
+                    }}
+                    else
+                        alert("No puede retar, primero debe cazar un etakemon")
+
+                },
+                error: function (response) {
+                    console.log("Fail cargando enviado reto " + response);
+                }
+            });
+
+
+
         }
     </script>
 

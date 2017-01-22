@@ -90,7 +90,7 @@ body {
 		</div>
 	
 <script>
-    var BASE_URI = "http://localhost:9091/etakemon/";
+    var BASE_URI = "http://10.192.253.237:9091/etakemon/";
     var count = 0;
 		var btnStyle = document.getElementById('p1').style.backgroundColor;
 		var jugada= [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -170,7 +170,9 @@ body {
                 success: function (response) {
                     // alert("ok", response);
                     // $.each(response, function (k, v) {
-                    alert("Juego enviado, "+ response);
+                    alert("Juego enviado, el ganador es: "+ response);
+                    window.location.href = "TodoReto.jsp";
+
                 },
                 error: function (response) {
                     console.log("Fail al rechazar reto " + response);

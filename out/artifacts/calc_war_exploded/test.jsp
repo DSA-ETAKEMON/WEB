@@ -45,7 +45,7 @@ obj.nick = "hicham100";
 obj.password = "asd";
         $.ajax({
             type: "POST",
-            url: "http://localhost:9091/etakemon/user/login",
+            url: "http://10.192.253.237:9091/etakemon/user/login",
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(obj),

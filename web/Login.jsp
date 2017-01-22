@@ -31,7 +31,7 @@
 
 <script>
 
-    var BASE_URI = "http://localhost:9091/etakemon/";
+    var BASE_URI = "http://10.192.253.237:9091/etakemon/";
     var warningVisible = true;
 
 
