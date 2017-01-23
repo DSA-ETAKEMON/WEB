@@ -30,9 +30,9 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+            <li><a href="Retar.jsp">Retar</a></li>
+            <li><a href="TodoReto.jsp">Mis Retos</a></li>
             <li><a href="Ranking.jsp">Ranking</a></li>
-            <li><a href="TodoReto.jsp">Retos</a></li>
-            <li><a href="Jugar.jsp">Luchar!</a></li>
         </ul>
         <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
@@ -42,30 +42,49 @@
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
-            <h1>Ranking EtakemonGO</h1>
-            <img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded"
-                 alt="Cinque Terre" width="304" height="236">
+            <img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="236">
+            <h2>Ranking EtakemonGO</h2>
+
         </center>
     </div>
 
     <center>
         <div id="formulario">
                 <center>
+                    <div class="alert alert-success">
+                        <strong>Retos nuevos</strong>
+                    </div>
                     <div id="recibidos" class="alert alert-info">
                         <strong>Retos recibidos</strong>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <strong>Partidas a jugar</strong>
                     </div>
                     <div id="enviadosAceptados" class="alert alert-info">
                         <strong>Retos enviados aceptados</strong>
                     </div>
+                    <div class="alert alert-info">
+                        <strong>Retos sin respuesta</strong>
+                    </div>
+
                     <div id="enviadosIDLE" class="alert alert-info">
                         <strong>Retos enviados pendientes</strong>
                     </div>
+
+                    <div class="alert alert-success">
+                        <strong>Partidas en espera del contrincante</strong>
+                    </div>
+
                     <div id="enviadosPendienteJuego" class="alert alert-info">
                         <strong>Partidas enviadas pendientes</strong>
                     </div>
                     <div id="recibidosPendientesJuego" class="alert alert-info">
                         <strong>Partidas recibidas pendientes</strong>
+                    </div>
 
+                    <div class="alert alert-danger">
+                        <strong>Partidas finalizadas</strong>
                     </div>
                     <div id="enviadosFinalizados" class="alert alert-info">
                         <strong>Partidas enviadas finalizadas</strong>
@@ -136,6 +155,7 @@
             success: function (response) {
                 if(parseInt(response)==0) {
                     $('#recibidosPendientesJuego').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                    $('#recibidosFinalizados').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
                 }else{
                     $.each(response, function (k, v) {
                         var emp = "empate";
@@ -155,7 +175,7 @@
                            //partidas recibidas finalizadas
                             $('#recibidosFinalizados').append("<div class='panel-heading'<br>Reto: " + cont + "</br></div>");
                             $('#recibidosFinalizados').append("<div class='panel-body'>Oponente: " + v.contrincanteuno + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ganador: " + v.ganador + "</center></div>");
-                            $('#recibidosFinalizados').append("<div class='btn-group'><button onClick='Accept(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Aceptar</button><button onClick='Cancel(" + JSON.stringify(v) + ")' type='button' class='btn btn-danger'>Rechazar</button></div>");
+                          //  $('#recibidosFinalizados').append("<div class='btn-group'><button onClick='Accept(" + JSON.stringify(v) + ")' type='button' class='btn btn-success'>Aceptar</button><button onClick='Cancel(" + JSON.stringify(v) + ")' type='button' class='btn btn-danger'>Rechazar</button></div>");
                         }});}
             },
             error: function (response) {
@@ -178,7 +198,7 @@
              data: JSON.stringify(fightidle),
             success: function (response) {
                 if(parseInt(response.length)==0){
-                    $('#recibidosPendientesJuego').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
+                    $('#enviadosIDLE').append("<div class='alert alert-warning'><strong>No tienes ningun reto!</strong></center></div>");
                 }else{
                 $.each(response, function (k, v) {
                     var cont = k + 1;

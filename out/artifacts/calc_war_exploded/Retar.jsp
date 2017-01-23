@@ -30,9 +30,9 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+            <li><a href="Retar.jsp">Retar</a></li>
+            <li><a href="TodoReto.jsp">Mis Retos</a></li>
             <li><a href="Ranking.jsp">Ranking</a></li>
-            <li><a href="TodoReto.jsp">Retos</a></li>
-            <li><a href="Jugar.jsp">Luchar!</a></li>
         </ul>
         <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
@@ -42,9 +42,9 @@
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
-            <h1>Retar a otro usuario</h1>
-            <img src="http://topcinque.com/wp-content/uploads/2014/10/top_cinque_logo_retina.png" class="img-rounded"
-                 alt="Cinque Terre" width="304" height="236">
+            <img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="236">
+            <h2>Retar a otro usuario</h2>
+
         </center>
     </div>
 

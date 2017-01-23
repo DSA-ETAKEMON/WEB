@@ -20,7 +20,7 @@
         }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Login - EtakemonGO</title>
+    <title>Registro - EtakemonGO</title>
 </head>
 <body>
 
@@ -29,7 +29,8 @@
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
-            <h1>Registro EtakemonGO</h1>
+            <img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="236">
+
         </center>
     </div>
 </div>
@@ -37,31 +38,32 @@
 
     <div class="container">
         <div class="jumbotron" id="formulario" style='background: #C7E8EF;'>
+            <h3>Registro</h3>
             <form>
                  
                 <div class="form-group">
-                        <label for="inputNick">Nick :</label>     <input
+                        <label for="inputNick">Nick: </label>     <input
                         class="form-control" id="inputNick" name="inputNick" type="text">  
                 </div>
                  
                 <div class="form-group">
-                        <label for="inputPass">Password :</label>     <input
+                        <label for="inputPass">Password: </label>     <input
                         class="form-control" id="inputPass" type="password">  
                 </div>
 
                 <div class="form-group">
-                        <label for="inputName">Name :</label>     <input
+                        <label for="inputName">Name: </label>     <input
                         class="form-control" id="inputName" type="text">  
                 </div>
 
                 <div class="form-group">
-                        <label for="inputSurName">Surname :</label>     <input
+                        <label for="inputSurName">Surname: </label>     <input
                         class="form-control" id="inputSurName" type="text">  
                 </div>
 
                 <div class="form-group">
-                        <label for="inputMail">Email :</label>     <input
-                        class="form-control" id="inputMail" type="mail">  
+                        <label for="inputMail">Email: </label>     <input
+                        class="form-control" id="inputMail" type="email">  
                 </div>
 
 
@@ -105,9 +107,13 @@
                                     dataType: 'json',
                                     data: JSON.stringify(obj),
                                     success: function (response) {
-                                        alert("Usuario registrado ok" + obj.nick);
-                                        localStorage.setItem("usuario", obj);
-                                        window.location.href = 'Login.jsp';
+                                        if(response!=null) {
+                                            alert("Usuario registrado correctamente con nick: " + obj.nick);
+                                            localStorage.setItem("usuario", obj);
+                                            window.location.href = 'Login.jsp';
+                                        }
+                                        else
+                                            alert("Nick ya registrado");
                                     },
                                     error: function (response) {
                                         console.log("login fail" + response);

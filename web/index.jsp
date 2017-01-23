@@ -40,8 +40,7 @@ body {
 	<div class="container">
 		<div class="jumbotron" style='background: #C7E8EF;'>
 			<center>
-				<h1>EtakemonGO</h1>
-				<img src="http://www.pd4pic.com/images/head-africa-branches-circle-lion-art-animal-mane.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+				<img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="200">
 			</center>
 		</div>
 

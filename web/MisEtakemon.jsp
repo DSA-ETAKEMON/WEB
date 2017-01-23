@@ -32,9 +32,9 @@ body {
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+			<li><a href="Retar.jsp">Retar</a></li>
+			<li><a href="TodoReto.jsp">Mis Retos</a></li>
 			<li><a href="Ranking.jsp">Ranking</a></li>
-			<li><a href="TodoReto.jsp">Retos</a></li>
-			<li><a href="Jugar.jsp">Luchar!</a></li>
 		</ul>
 		<li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
 	</div>
@@ -44,13 +44,15 @@ body {
 	<div class="container">
 		<div class="jumbotron" style='background: #C7E8EF;'>
 			<center>
-				<h1>Mis Etakemons</h1>
-				<img src="http://www.pd4pic.com/images/head-africa-branches-circle-lion-art-animal-mane.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+				<img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="200">
+				<h2>Mis Etakemons</h2>
 			</center>
 		</div>
 	</div>
 <div id="result">
-		<center>
+	<div id="description">
+
+	<center>
 
 		 
 		<br>
@@ -65,39 +67,93 @@ body {
 
 
     $(document).ready(function () {
-               var obj = JSON.parse(localStorage.getItem("user"));
-               console.log(obj.name);
-               var id = parseInt(obj.id);
-               console.log("id es ", id);
-               // obj.nick = $("#inputNick").val();
-               // obj.password = $("#inputPass").val();
+        var ids = [];
+        var nombres = [];
+        var tipos = [];
+        var puntos = [];
+        var descripciones = [];
+        var contador=0;
+
+        var obj = JSON.parse(localStorage.getItem("user"));
+        console.log(obj.name);
+        var id = parseInt(obj.id);
+        console.log("id es ", id);
+        // obj.nick = $("#inputNick").val();
+        // obj.password = $("#inputPass").val();
+        $.ajax({
+            url: BASE_URI + "etakemon/misestakemons/" + id,
+            type: 'GET',
+            crossDomain: true,
+            contentType: 'application/json',
+            dataType: 'json',
+            // data: JSON.stringify(obj),
+            success: function (response) {
+                $.each(response, function (k, v) {
+                    ids.push(v.id);
+                    nombres.push(v.name);
+                    tipos.push(v.tipo);
+                    puntos.push(v.puntos);
+                    printar(k);
+
+                    //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
+                    // $('#result').append("<li class='list-group-item list-group-item-info'><center> <span class='label label-success'>Nombre:</span>"+" "+v.name+" <br> <span class='label label-success'>Tipo:</span> "+" "+v.tipo+" <br> <span class='label label-success'>Puntos:</span> "+" "+ v.puntos +" <br></center></li>");
+                    // $('#result').append("<li class='list-group-item list-group-item-warning'><center><img src='/img/"+v.tipo+".png' class='img-responsive' alt='Cinque Terre' width='100' height='150'></center></li><br>");
+                });
+                // alert("Lista etakemons cargada : " + (response));
+                // localStorage.setItem("nick", obj.nick)
+                // window.location.href = "Menu.jsp";
+            },
+            error: function (response) {
+                console.log("Fail cargando la lista de etakemons  " + response);
+            }
+        }).done(function (result) {
+          /*  ids.forEach(function (entry) {
                 $.ajax({
-                    url: BASE_URI + "etakemon/misestakemons/"+id,
+                    url: BASE_URI + "etakemon/getdescription/" + entry,
                     type: 'GET',
                     crossDomain: true,
                     contentType: 'application/json',
                     dataType: 'json',
-                   // data: JSON.stringify(obj),
+                    // data: JSON.stringify(obj),
                     success: function (response) {
-                        $.each(response, function(k, v) {
-                          //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
-                            $('#result').append("<li class='list-group-item list-group-item-info'><center>Nombre: "+v.name+" <br>Tipo: "+v.tipo+" <br>Puntos: "+ v.puntos +" <br>ID: "+ v.id +"</center></li>");
-                            $('#result').append("<li class='list-group-item list-group-item-warning'><center><img src='/img/"+v.tipo+".png' class='img-responsive' alt='Cinque Terre' width='100' height='150'></center></li><br>");
+                        $.each(response, function (k, v) {
 
-
+                            descripciones.push(v.poder);
+                            printar(contador);
+                            contador++;
                         });
 
-                       // alert("Lista etakemons cargada : " + (response));
-                       // localStorage.setItem("nick", obj.nick)
-                       // window.location.href = "Menu.jsp";
+                        // alert("Lista etakemons cargada : " + (response));
+                        // localStorage.setItem("nick", obj.nick)
+                        // window.location.href = "Menu.jsp";
                     },
                     error: function (response) {
                         console.log("Fail cargando la lista de etakemons  " + response);
                     }
                 });
+            });*/
+        });
 
 
+
+
+        //  ids.forEach(function(entry) {
+
+        // nombre,tipo ... carga desde vectores
+        function printar(contador) {
+
+
+            $('#result').append("<li class='list-group-item list-group-item-info'><center> <span class='label label-success'>Nombre:</span>" + " " + nombres[contador] + " <br> <span class='label label-success'>Tipo:</span> " + " " + tipos[contador] + " <br> <span class='label label-success'>Puntos:</span> " + " " + puntos[contador] + " <br></center></li>");
+
+            //imagen del etakemon ...  carga desde vectores
+            $('#result').append("<li class='list-group-item list-group-item-warning'><center><img src='/img/" + tipos[contador] + ".png' class='img-responsive' alt='Este Etakemon esta asumajao' width='100' height='150'></center></li><br>");
+
+        }
     });
+
+       // });
+
+  //  });
 
 </script>
 <ul id="res" class="list-group"></ul>

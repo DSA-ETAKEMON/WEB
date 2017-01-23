@@ -44,7 +44,7 @@
                 if (warningVisible) {
                     $("#formulario")
                         .append(
-                            "<br><div class=\"alert alert-warning\"> <strong>Campos obligatorios !</strong><br> Debe rellenar los dos campos.") // John
+                            "<br><div class=\"alert alert-warning\"> <strong>Campos obligatorios!</strong><br> Debe rellenar los dos campos.") // John
                     warningVisible = false;
                 }
             } else {
@@ -68,7 +68,10 @@
                         console.log("login fail" + response);
                         $("#formulario")
                             .append(
-                                "<br><div class=\"alert alert-warning\"> <strong>Datos incorrecto !</strong><br>")
+                                "<br><div class=\"alert alert-warning\"> <strong>Datos incorrecto !</strong><br>");
+                        setTimeout(function () {
+                            window.location.reload(1);
+                        },1000)
                     }
                 });
             }
@@ -83,7 +86,7 @@
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
-            <h1>Login EtakemonGO</h1>
+            <img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="200">
         </center>
     </div>
 
@@ -92,6 +95,7 @@
 
         <div class="container">
             <div class="jumbotron" id="formulario" style='background: #C7E8EF;'>
+                    <h3>Login</h3>
                 <form id="submitform">
                      
                     <div class="form-group">

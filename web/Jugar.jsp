@@ -35,9 +35,9 @@ body {
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+			<li><a href="Retar.jsp">Retar</a></li>
+			<li><a href="TodoReto.jsp">Mis Retos</a></li>
 			<li><a href="Ranking.jsp">Ranking</a></li>
-			<li><a href="TodoReto.jsp">Retos</a></li>
-			<li><a href="Jugar.jsp">Luchar!</a></li>
 		</ul>
 		<li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
 	</div>
@@ -50,7 +50,7 @@ body {
 		<div class="jumbotron" style='background: #C7E8EF;'>
 			<center>
 				<h1>Juego</h1>
-				<img src="http://pokemongohackonline.com/wp-content/uploads/2016/07/unnamed-13.png" class="img-rounded" alt="Cinque Terre" >
+				<img src="http://pokemongohackonline.com/wp-content/uploads/2016/07/unnamed-13.png" class="img-rounded" alt="Cinque Terre" width="200" height="200" >
 			</center>
 		</div>
 		</div>
