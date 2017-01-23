@@ -43,7 +43,7 @@
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
             <img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="236">
-            <h2>Ranking EtakemonGO</h2>
+            <h2>Todos mis retos</h2>
 
         </center>
     </div>
@@ -298,6 +298,7 @@
                     // $.each(response, function (k, v) {
                     alert("Reto aceptado, espere que su oponente juegue.");
                     localStorage.setItem("fight", JSON.stringify(response))
+                    window.location.reload(1);
                 },
                 error: function (response) {
                     console.log("Fail al aceptar reto " + response);
@@ -317,16 +318,17 @@
         if (answer) {
             //some code
             $.ajax({
-                url: BASE_URI + "fight/returnreto",
+                url: BASE_URI + "fight/borrarReto",
                 type: 'POST',
                 crossDomain: true,
                 contentType: 'application/json',
-                dataType: 'json',
+              //  dataType: 'json',
                 data: JSON.stringify(obj),
                 success: function (response) {
                     // alert("ok", response);
                     // $.each(response, function (k, v) {
-                    alert("Reto rechazado, asumajao.");
+                    alert(response);
+                    window.location.reload(1);
                 },
                 error: function (response) {
                     console.log("Fail al rechazar reto " + response);

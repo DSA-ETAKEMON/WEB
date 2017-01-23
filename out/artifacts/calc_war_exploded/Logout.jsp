@@ -14,7 +14,6 @@
         #formulario {
             width: 400px;
         }
-
         body {
             background-color: #646367;
         }

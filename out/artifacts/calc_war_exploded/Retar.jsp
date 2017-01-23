@@ -85,9 +85,9 @@
                         var id2 = parseInt(v.id);
                        // alert("id2 es " + v.id + "id 1 es" + id);
                         //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
-                        $('#listado').append("<div onClick='reply_click(" + id2 + "," + id + ")' class='panel-heading'<br>Ranking: " + cont + "</br></div>");
+                        $('#listado').append("<div  class='panel-heading'<br>Jugador: " + cont + "</br></div>");
                         $('#listado').append("<div class='panel-body'>Nick: " + v.name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos: " + v.puntuacionTotal + "</center></div>");
-
+                        $('#listado').append("<button onClick='reply_click(" + id2 + "," + id + ")' type='button' class='btn btn-success'>Jugar</button><br>");
                     });
                 },
                 error: function (response) {
