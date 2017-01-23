@@ -22,18 +22,23 @@
         }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>WikiTakemons - EtakemonGO</title>
+    <title>WikiList - EtakemonGO</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
+            <a class="navbar-brand" href="Menu.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;EtakemonGo</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.jsp">Principal</a></li>
-            <li class="active"><a href="Wiki.jsp">WikiList</a></li>
+            <li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
+            <li><a href="Retar.jsp">Retar</a></li>
+            <li><a href="TodoReto.jsp">Mis Retos</a></li>
+            <li><a href="Ranking.jsp">Ranking</a></li>
+            <li><a href="Wiki.jsp">WikiList</a></li>
+
         </ul>
+        <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
 </nav>
 
@@ -42,7 +47,7 @@
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
             <img src="/img/logo.png" class="img-rounded" alt="EtakemonGoAsumajao" width="304" height="200">
-            <h2>Mis Etakemons</h2>
+            <h2>Etakemons existentes</h2>
         </center>
     </div>
 </div>

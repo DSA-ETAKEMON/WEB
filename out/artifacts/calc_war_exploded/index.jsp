@@ -30,7 +30,6 @@ body {
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.jsp">Principal</a></li>
-		<li class="active"><a href="Wiki.jsp">WikiList</a></li>
 
 		<!--<li><a href="MisEtakemon.jsp">Mis Etakemons</a></li>
         <li><a href="Ranking.jsp">Ranking</a></li>
@@ -51,7 +50,6 @@ body {
 				<div class="jumbotron" id="formulario" style='background: #C7E8EF;'>
 					<h4>Seleccione una sección</h4>
 					<a href="Login.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</button></a><br>
-					<br><a href="Wiki.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;WikiTakemons&nbsp;&nbsp;&nbsp;</button></a><br>
 					<!-- <br> <a href="MisEtakemon.jsp"><button class="btn btn-info">&nbsp;Mis Etakemons&nbsp;</button></a><br> -->
 					<br> <a href="Registrar.jsp"><button class="btn btn-info">
 							Registrar</button></a><br>

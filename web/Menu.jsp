@@ -36,10 +36,12 @@
             <li><a href="Retar.jsp">Retar</a></li>
             <li><a href="TodoReto.jsp">Mis Retos</a></li>
             <li><a href="Ranking.jsp">Ranking</a></li>
+            <li><a href="Wiki.jsp">WikiList</a></li>
+
         </ul>
         <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
-</nav>  <br>
+</nav> <br>
 <div class="container">
     <div class="jumbotron" style='background: #C7E8EF;'>
         <center>
@@ -55,8 +57,8 @@
                 <h3><p id="nick"></p></h3>
                 <br> <a href="MisEtakemon.jsp"><button class="btn btn-info">&nbsp;Mis Etakemons&nbsp;</button></a><br>
                 <br> <a href="Retar.jsp"><button class="btn btn-info">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a><br>
-                <br> <a href="TodoReto.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mis Retos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a><br>
+                <br> <a href="TodoReto.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mis Retos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a><br>
                 <br> <a href="Ranking.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ranking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a><br>
                 <br> <a href="Wiki.jsp"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WikiList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a><br>
 

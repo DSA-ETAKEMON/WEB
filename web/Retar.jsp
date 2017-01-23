@@ -33,6 +33,8 @@
             <li><a href="Retar.jsp">Retar</a></li>
             <li><a href="TodoReto.jsp">Mis Retos</a></li>
             <li><a href="Ranking.jsp">Ranking</a></li>
+            <li><a href="Wiki.jsp">WikiList</a></li>
+
         </ul>
         <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
@@ -87,7 +89,7 @@
                         //  alert("Lista etakemons cargada : " + (v.tipo) + " y la k es"  + k);
                         $('#listado').append("<div  class='panel-heading'<br>Jugador: " + cont + "</br></div>");
                         $('#listado').append("<div class='panel-body'>Nick: " + v.name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Puntos: " + v.puntuacionTotal + "</center></div>");
-                        $('#listado').append("<button onClick='reply_click(" + id2 + "," + id + ")' type='button' class='btn btn-success'>Jugar</button><br>");
+                        $('#listado').append("<button onClick='reply_click(" + id2 + "," + id + ")' type='button' class='btn btn-success'>Jugar</button><br><br>");
                     });
                 },
                 error: function (response) {

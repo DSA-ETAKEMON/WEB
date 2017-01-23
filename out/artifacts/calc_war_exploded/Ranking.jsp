@@ -33,6 +33,8 @@ body {
             <li><a href="Retar.jsp">Retar</a></li>
             <li><a href="TodoReto.jsp">Mis Retos</a></li>
             <li><a href="Ranking.jsp">Ranking</a></li>
+            <li><a href="Wiki.jsp">WikiList</a></li>
+
         </ul>
         <li class="navbar-btn"><a class="btn btn-danger" href="Logout.jsp">Cerrar Sesión</a></li>
     </div>
