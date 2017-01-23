@@ -20,7 +20,7 @@
         }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Insert title here</title>
+    <title>Mis retos - EtakemonGO</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -283,6 +283,7 @@
     });
 
     function Accept(v) {
+
         var obj = {
             'id': v.id,
             'estado1': 'TRUE',
@@ -293,58 +294,33 @@
         //alert(obj.contrincantedos+ obj.contrincanteuno);
 
 
-        $.ajax({
-            url: BASE_URI + "etakemon/misestakemons/" + v.id,
-            type: 'GET',
-            crossDomain: true,
-            contentType: 'application/json',
-            dataType: 'json',
-            data: JSON.stringify(obj),
-            success: function (response) {
-                // alert("ok", response);
-                if (response != null) {
-
-
-                    var answer = confirm("Desea aceptar el reto con el jugador con id " + v.contrincanteuno + "?");
-                    if (answer) {
-                        //some code
-                        $.ajax({
-                            url: BASE_URI + "fight/returnreto",
-                            type: 'POST',
-                            crossDomain: true,
-                            contentType: 'application/json',
-                            dataType: 'json',
-                            data: JSON.stringify(obj),
-                            success: function (response) {
-                                // alert("ok", response);
-                                // $.each(response, function (k, v) {
-                                alert("Reto aceptado, espere que su oponente juegue.");
-                                localStorage.setItem("fight", JSON.stringify(response))
-                                window.location.reload(1);
-                            },
-                            error: function (response) {
-                                console.log("Fail al aceptar reto " + response);
-                            }
-                        });
-                    }
-                    else {
-                        //some code
-                        alert("OK");
-                    }
-
+        var answer = confirm("Desea aceptar el reto con el jugador con id " + v.contrincanteuno + "?");
+        if (answer) {
+            //some code
+            $.ajax({
+                url: BASE_URI + "fight/returnreto",
+                type: 'POST',
+                crossDomain: true,
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify(obj),
+                success: function (response) {
+                    // alert("ok", response);
+                    // $.each(response, function (k, v) {
+                    alert("Reto aceptado, espere que su oponente juegue.");
+                    localStorage.setItem("fight", JSON.stringify(response))
+                    window.location.reload(1);
+                },
+                error: function (response) {
+                    console.log("Fail al aceptar reto " + response);
                 }
-                else
-                    alert("No puede retar, primero debe cazar un etakemon")
+            });
+        }
+        else {
+            //some code
+            alert("OK");
+        }
 
-            },
-
-            ///////
-
-
-            error: function (response) {
-                console.log("Fail cargando enviado reto " + response);
-            }
-        });
     }
 
     function Cancel(v) {
